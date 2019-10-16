@@ -14,7 +14,7 @@ public class VentanaGrafica extends JFrame {
 //		JPanel pSeleccion = new JPanel(); // Comenzaremos con la parte del juego > guardar partida > login 
 		
 		
-		add(pJuego);
+
 		
 		setVisible(true);
 	}
