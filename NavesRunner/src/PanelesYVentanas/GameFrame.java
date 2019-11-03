@@ -1,4 +1,5 @@
 package PanelesYVentanas;
+import PanelesYVentanas.Constantes;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -10,24 +11,23 @@ public class GameFrame extends JFrame{
 
 	public GameFrame() {
 		
-		Nave ne = new Nave(0,100,100);
-		JPanel tets = new JPanel(null);
-		tets.add(ne.getImage());
-		this.getContentPane().add(tets);
+		JPanel game = new JPanel();
 		
 		this.setTitle("Space Runner");
 		this.setSize((Toolkit.getDefaultToolkit().getScreenSize().width)/2, (Toolkit.getDefaultToolkit().getScreenSize().height)/2);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setLayout(null);
 		this.setResizable(false);	
 		this.setVisible(true);
+		
+		game.setLayout(null);
+		this.getContentPane().add(game);
+		
+		Juego juego = new Juego(game);
+		
 	
 	}
 	
-	public void CreaJuego() {
-		// Crea Naves (Aliadas, enemigas)
-		// Crea obstaculos
-		//Juega();
-	}
 	
 }
 

@@ -32,5 +32,17 @@ public class CircleBox extends GeoCollision{
 	}
 	public void setRad(double rad) {
 		this.rad = rad;
+	}
+
+
+	@Override
+	public boolean isCollision(GeoCollision g1, GeoCollision g2) {
+		
+		if ((g1 instanceof CircleBox) && (g2 instanceof CircleBox)) {
+			
+		}
+		
+		
+		return false;
 	}	
 }

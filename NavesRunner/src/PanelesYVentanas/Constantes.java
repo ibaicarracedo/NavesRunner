@@ -15,6 +15,8 @@ public final class Constantes {
 	//Naves
 	public static final int JLABEL_ANCHO = 76;
 	public static final int JLABEL_ALTO = 76;
+	public static final int POS_INICIAL_ANCHO = FRAME_ANCHO/2;
+	public static final int POS_INICIAL_ALTO = FRAME_ALTO/3;
 	
 	
 }
