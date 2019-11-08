@@ -8,9 +8,12 @@ import Collision.*;
 
 public class Juego {
 	
-	public Juego(JPanel j) {
+	public void jugar() {
 		
-		Nave principal = new Nave(0, 0, Constantes.POS_INICIAL_ALTO);
+		
+		
+	}
+		
 		
 		
 		
@@ -24,4 +27,4 @@ public class Juego {
 //		
 //		
 //	}
-}
+

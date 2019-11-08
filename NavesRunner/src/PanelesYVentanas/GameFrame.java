@@ -23,7 +23,7 @@ public class GameFrame extends JFrame{
 		game.setLayout(null);
 		this.getContentPane().add(game);
 		
-		Juego juego = new Juego(game);
+		Juego juego = new Juego();
 		
 	
 	}

@@ -1,6 +1,8 @@
 package PanelesYVentanas;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -70,6 +72,51 @@ public class LoginFrame extends JFrame {
 		contentPane.add(btnLogin);
 		
 		JButton btnRegister = new JButton("Register");
+		btnRegister.addActionListener(new ActionListener() { // ABrimos ventana registro y hacemos lo que tengamos que hacer
+			public void actionPerformed(ActionEvent arg0) {
+				JFrame registerForm = new JFrame("Register form");// Abro nueva forma de registro
+				JPanel botonera = new JPanel();
+				botonera.setBackground(Color.DARK_GRAY);
+				JPanel registro = new JPanel();
+				registro.setLayout(null);
+				JButton register = new JButton("Register");
+				JButton exit = new JButton("Exit");
+				
+				JLabel nombre = new JLabel("Nombre: ");
+				nombre.setSize(70, 15);
+				nombre.setLocation(20, 10);
+				registro.add(nombre);
+				
+				JLabel apellido = new JLabel("Apellido: ");
+				apellido.setSize(70, 15);
+				apellido.setLocation(20, 30);
+				registro.add(apellido);
+				
+				JLabel email = new JLabel("Email: ");
+				email.setSize(70, 15);
+				email.setLocation(20, 50);
+				registro.add(email); 
+				
+				JLabel pass = new JLabel("Password : ");
+				pass.setSize(70, 15);
+				pass.setLocation(20, 70);
+				registro.add(pass); 
+				
+				
+				registerForm.setSize(300, 175);
+				registerForm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);;
+				
+				botonera.add(register);
+				botonera.add(exit);
+				
+				
+				registerForm.add(botonera, BorderLayout.SOUTH);
+				registerForm.add(registro, BorderLayout.CENTER);
+				
+				
+				registerForm.setVisible(true);
+			}
+		});
 		btnRegister.setBounds(480, 198, 115, 29);
 		contentPane.add(btnRegister);
 		
