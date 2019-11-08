@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -83,28 +84,69 @@ public class LoginFrame extends JFrame {
 				JButton exit = new JButton("Exit");
 				
 				JLabel nombre = new JLabel("Nombre: ");
-				nombre.setSize(70, 15);
+				nombre.setSize(70, 25);
 				nombre.setLocation(20, 10);
 				registro.add(nombre);
 				
 				JLabel apellido = new JLabel("Apellido: ");
-				apellido.setSize(70, 15);
-				apellido.setLocation(20, 30);
+				apellido.setSize(70, 25);
+				apellido.setLocation(20, 40);
 				registro.add(apellido);
 				
 				JLabel email = new JLabel("Email: ");
-				email.setSize(70, 15);
-				email.setLocation(20, 50);
+				email.setSize(70, 25);
+				email.setLocation(20, 70);
 				registro.add(email); 
 				
 				JLabel pass = new JLabel("Password : ");
-				pass.setSize(70, 15);
-				pass.setLocation(20, 70);
+				pass.setSize(70, 25);
+				pass.setLocation(20, 100);
 				registro.add(pass); 
 				
+				JTextField name1= new JTextField("Nombre");
+				name1.setSize(175, 25);
+				name1.setLocation(100, 10);
+				registro.add(name1);
 				
-				registerForm.setSize(300, 175);
-				registerForm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);;
+				JTextField ape1= new JTextField("Apellido");
+				ape1.setSize(175, 25);
+				ape1.setLocation(100, 40);
+				registro.add(ape1);
+				
+				JTextField email1= new JTextField("example@example.com");
+				email1.setSize(175, 25);
+				email1.setLocation(100, 70);
+				registro.add(email1);
+				
+				JPasswordField pass1= new JPasswordField("    ");
+				pass1.setSize(175, 25);
+				pass1.setLocation(100, 100);
+				registro.add(pass1);
+				
+				register.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						/*
+						Bases de datos metodos de añadir etc implementando bases de datos de usuarios 
+						1. Comprobar si el usuario esta creado antes de registrar buscando por un email
+						2. Si esta showDialog() de email ya esta en uso
+						3. Si no, crea un usuario (INSERT)
+						4. Vuelta a ventana principal tras checkear el correo electronico
+						*/
+						
+					}
+				});
+				
+				exit.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						registerForm.dispose();
+					}
+				});
+				
+				
+				
 				
 				botonera.add(register);
 				botonera.add(exit);
@@ -114,6 +156,9 @@ public class LoginFrame extends JFrame {
 				registerForm.add(registro, BorderLayout.CENTER);
 				
 				
+				registerForm.setSize(300, 225);
+				registerForm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);;
+				registerForm.setLocationRelativeTo(null);
 				registerForm.setVisible(true);
 			}
 		});
