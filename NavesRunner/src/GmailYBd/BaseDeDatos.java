@@ -1,4 +1,4 @@
-package PanelesYVentanas;
+package GmailYBd;
 
 import java.sql.*;
 
@@ -27,11 +27,14 @@ public class BaseDeDatos {
 		
 	}
 	
+	
+	/* 
+	 * 
+	 */
 	public void cerrarBD() {
 		try {
 			if (conexionBD != null)
 				conexionBD.close();
 		}  catch (SQLException e) {}
 	}
-	
 }

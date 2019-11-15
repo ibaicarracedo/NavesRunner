@@ -1,4 +1,5 @@
 package PanelesYVentanas;
+import GmailYBd.MailYConfirmaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -8,6 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
+
+import org.omg.CORBA.Environment;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -20,7 +24,7 @@ public class LoginFrame extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtUser;
 	private JTextField txtPassword;
-
+	private static LoginFrame frame;
 	/**
 	 * Launch the application.
 	 */
@@ -28,7 +32,7 @@ public class LoginFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginFrame frame = new LoginFrame();
+					frame = new LoginFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -123,7 +127,7 @@ public class LoginFrame extends JFrame {
 				pass1.setLocation(100, 100);
 				registro.add(pass1);
 				
-				register.addActionListener(new ActionListener() {
+		register.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						
@@ -131,17 +135,18 @@ public class LoginFrame extends JFrame {
 						Bases de datos metodos de añadir etc implementando bases de datos de usuarios 
 						1. Comprobar si el usuario esta creado antes de registrar buscando por un email
 						2. Si esta showDialog() de email ya esta en uso
-						3. Si no, crea un usuario (INSERT)
+ 						3. Si no, crea un usuario (INSERT)
 						4. Vuelta a ventana principal tras checkear el correo electronico
 						*/
 						
 					}
-				});
+		});
 				
 				exit.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						registerForm.dispose();
+						frame.setVisible(true);
 					}
 				});
 				
@@ -160,6 +165,7 @@ public class LoginFrame extends JFrame {
 				registerForm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);;
 				registerForm.setLocationRelativeTo(null);
 				registerForm.setVisible(true);
+				frame.dispose();;
 			}
 		});
 		btnRegister.setBounds(480, 198, 115, 29);
@@ -171,3 +177,5 @@ public class LoginFrame extends JFrame {
 		contentPane.add(lblLogin);
 	}
 }
+
+	
