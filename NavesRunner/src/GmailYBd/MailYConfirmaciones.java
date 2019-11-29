@@ -10,10 +10,10 @@ import javax.mail.internet.MimeMessage;
 
 public class MailYConfirmaciones{
 
-	private final String nomMail = "navesrunner";
-	private final String password = "1234568naves";
-	private final String asuntoMail = "Bienvenido a NavesRunner. Nuestro primer runner ∞. ";
-	private final String cuerpoMail = "Bienvenido a NavesRunner. \n"
+	private static final String nomMail = "navesrunner";
+	private static final String password = "12345naves";
+	private static final String asuntoMail = "Bienvenido a NavesRunner. Nuestro primer runner ∞. ";
+	private static final String cuerpoMail = "Bienvenido a NavesRunner. \n"
 			+ "Tu usuario ha sido generado correctamente, prueba a logearte y empezar a disfrutar. \n"
 			+ "Gracias por elegirnos. Iremos actualizando en funcion de vuestras sugerencias que recibamos en nuestro correo indicado al final del email.\n"
 			+ "Un saludo y muchas gracias por su confianza. \n"
@@ -21,7 +21,7 @@ public class MailYConfirmaciones{
 			+ "El staff de NavesRunner \n\n"
 			+ "Contacto: navesrunner@gmail.com\n";
 	
-	public void enviarMail(String destinatario)  {
+	public static void enviarMail(String destinatario)  {
 		
 		Properties prop = System.getProperties(); // Tenemos que asignar las propiedades y crear una sesion, con la sesion un mensaje y con el mensaje un transporte
 		prop.put("mail.smtp.host", "smtp.gmail.com");

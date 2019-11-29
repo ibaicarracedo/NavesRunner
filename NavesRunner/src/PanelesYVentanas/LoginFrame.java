@@ -127,10 +127,11 @@ public class LoginFrame extends JFrame {
 				pass1.setLocation(100, 100);
 				registro.add(pass1);
 				
-		register.addActionListener(new ActionListener() {
+				register.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						
+						// FUNCIONA MailYConfirmaciones.enviarMail("ibaicarracedo@gmail.com");
 						/*
 						Bases de datos metodos de añadir etc implementando bases de datos de usuarios 
 						1. Comprobar si el usuario esta creado antes de registrar buscando por un email
@@ -140,7 +141,7 @@ public class LoginFrame extends JFrame {
 						*/
 						
 					}
-		});
+				});
 				
 				exit.addActionListener(new ActionListener() {
 					@Override
