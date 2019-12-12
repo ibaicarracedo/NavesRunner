@@ -63,8 +63,8 @@ public class Obstaculo {
 	 */
 	 public void mueve( double tiempoDeMovimiento ) {
 		 
-		 this.posX = this.velocidad * tiempoDeMovimiento;
-		 this.posY = this.velocidad * tiempoDeMovimiento;
+		 this.posX += this.velocidad * tiempoDeMovimiento;
+		 this.posY += this.velocidad * tiempoDeMovimiento;
 		 
 	 }
 }

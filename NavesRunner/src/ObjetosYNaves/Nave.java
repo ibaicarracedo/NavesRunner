@@ -2,14 +2,12 @@ package ObjetosYNaves;
 
 import java.awt.Rectangle;
 
-import Collision.*;
 
 public class Nave {
 
 	private double velocidad;
 	private double posX;
 	private double posY;
-	// private CircleBox c1;
 	private JLabelNave image;
 	
 	public Nave (double vel, double posX, double posY) {
