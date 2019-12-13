@@ -4,20 +4,31 @@ import java.awt.Toolkit;
 public final class Constantes {
 	
 	// Constantes ventana
-	public static final int FRAME_ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width/2;
-	public static final int FRAME_ALTO = Toolkit.getDefaultToolkit().getScreenSize().height/2;
+	public static final int FRAME_ANCHO = 990;
+	public static final int FRAME_ALTO = 540;
 	public static final int FUENTE_SCORE = 14;
 	
 	// Constantes obstaculos
-	public static int OB_VEL = 10;
+	public static int OB_VEL = 20; 
 	public static final double OC_ACC = 2.5f;
 	
 	//Naves
-	public static final int JLABEL_ANCHO = 76;
+	public static final int JLABEL_ANCHO = 76; // Tambien vale para asteroides
 	public static final int JLABEL_ALTO = 76;
-	public static final int POS_INICIAL_ANCHO = FRAME_ANCHO/2;
-	public static final int POS_INICIAL_ALTO = FRAME_ALTO/3;
-	public static final int TIEMPO_PARPADEO = 2;
+	public static final int POS_INICIAL_ANCHO = 0;
+	public static final int POS_INICIAL_ALTO = 220;
+	public static final int TIEMPO_PARPADEO = 2; //Cuando choca impl mas adelante con vidas
 	
+	//Asteroides
+	public static int PROB_AST = 30; // Podemos ponerla en tanto por 1 o tanto por 100. No final porque mas dificil con tiempo (reduce)
+	
+	//Hitbox
+	public static final double RAD_HIT = 54.0d; // Pitagoras A^2 = 2*(38^2)
+	
+	//Frames
+	public static final long TASA_REFRESCO = 17; // Así se consigue la pantalla a 60hz 1s/16.66ms = 60
+	
+	//Puntuacion
+	public static final double INC_PUNT = 2.5d;
 	
 }

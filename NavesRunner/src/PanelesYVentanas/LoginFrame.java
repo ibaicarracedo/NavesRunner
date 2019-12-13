@@ -69,8 +69,15 @@ public class LoginFrame extends JFrame {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GameFrame game = new GameFrame();
-				dispose();
+				(new Thread() {
+					@Override
+					public void run() {
+						dispose();
+						GameFrame.main();
+						super.run();
+					}
+				}).start();
+
 			}
 		});
 		btnLogin.setBounds(480, 164, 115, 29);
@@ -131,7 +138,8 @@ public class LoginFrame extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						
-						// FUNCIONA MailYConfirmaciones.enviarMail("ibaicarracedo@gmail.com");
+						MailYConfirmaciones.enviarMail(email1.getText());
+						
 						/*
 						Bases de datos metodos de añadir etc implementando bases de datos de usuarios 
 						1. Comprobar si el usuario esta creado antes de registrar buscando por un email

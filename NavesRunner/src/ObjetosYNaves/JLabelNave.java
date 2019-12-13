@@ -1,22 +1,23 @@
 package ObjetosYNaves;
-import java.awt.Image;
+
+import java.awt.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class JLabelNave extends JLabel {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+import PanelesYVentanas.Constantes;
 
-	public JLabelNave() { // Saca el icono de una nave
-		ImageIcon img = new ImageIcon(System.getProperty("user.dir") +"\\img\\aliada.png");
-		Image image = img.getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT);
-		
-		img = new ImageIcon(image);
-		this.setIcon(img);
-		this.setSize(75,75);
-	}
+public class JLabelNave extends JLabel{
+
+		public JLabelNave() {
+			try {
+				ImageIcon img = new ImageIcon(System.getProperty("user.dir") +"\\img\\nave.png");
+				Image image = img.getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT);
+				img = new ImageIcon(image);
+				this.setIcon(img);
+				this.setSize(76,76);
+			} catch (Exception e) {
+				System.out.println("Fallo al encontrar el archivo. \n");
+			}
+		}
 }
