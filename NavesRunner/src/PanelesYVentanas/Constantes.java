@@ -9,7 +9,7 @@ public final class Constantes {
 	public static final int FUENTE_SCORE = 14;
 	
 	// Constantes obstaculos
-	public static int OB_VEL = 20; 
+	public static int OB_VEL = -20; 
 	public static final double OC_ACC = 2.5f;
 	
 	//Naves
@@ -17,16 +17,17 @@ public final class Constantes {
 	public static final int JLABEL_ALTO = 76;
 	public static final int POS_INICIAL_ANCHO = 0;
 	public static final int POS_INICIAL_ALTO = 220;
-	public static final int TIEMPO_PARPADEO = 2; //Cuando choca impl mas adelante con vidas
+	public static final int TIEMPO_PARPADEO = 2; //Cuando choca impl mas adelante con vidas (Si da tiempo)
 	
 	//Asteroides
-	public static int PROB_AST = 30; // Podemos ponerla en tanto por 1 o tanto por 100. No final porque mas dificil con tiempo (reduce)
+	public static int PROB_AST = 4; // Podemos ponerla en tanto por 1 o tanto por 100. No final porque mas dificil con tiempo (reduce)
 	
 	//Hitbox
-	public static final double RAD_HIT = 54.0d; // Pitagoras A^2 = 2*(38^2)
+	public static final double RAD_HIT = 27.0d; // Pitagoras A^2 = 2*(38^2)
+	public static final double RAD_HIT_AST = 30;
 	
 	//Frames
-	public static final long TASA_REFRESCO = 17; // Así se consigue la pantalla a 60hz 1s/16.66ms = 60
+	public static final long TASA_REFRESCO = 15; // Así se consigue la pantalla a 60hz 1s/16.66ms = 60
 	
 	//Puntuacion
 	public static final double INC_PUNT = 2.5d;

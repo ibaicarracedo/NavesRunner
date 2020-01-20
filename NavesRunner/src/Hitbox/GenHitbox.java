@@ -1,6 +1,6 @@
 package Hitbox;
 
-public abstract class GenHitbox {
+public abstract class GenHitbox { // IMPLEMENTAR MAIXMO NAVE OCN 3 RECTANGLES Y CHOQUE CON CIRC (ASTEROIDE)
 	
 	protected int x;
 	protected int y;
@@ -24,4 +24,5 @@ public abstract class GenHitbox {
 		return this.y;
 	}
 	
+	public abstract boolean hayChoqueHitbox(GenHitbox c1);
 }

@@ -1,5 +1,9 @@
 package ObjetosYNaves;
 
+import Hitbox.CircleHitbox;
+import Hitbox.GenHitbox;
+import PanelesYVentanas.Constantes;
+
 public class Asteroide extends ObstaculosYNaves {
 	
 	private JLabelAsteroide graf;
@@ -22,6 +26,7 @@ public class Asteroide extends ObstaculosYNaves {
 	 public JLabelAsteroide getLabel() {
 		 return graf;
 	 }
+	 
 
 
 	 /** Cambia la posición del asteroide solo X dependiendo de su velocidad 
@@ -30,7 +35,6 @@ public class Asteroide extends ObstaculosYNaves {
 	 public void mueve( double tiempoDeMovimiento ) {
 		 
 		 this.posX += this.vel * tiempoDeMovimiento;
-		 System.out.println(this.posX + " " + this.vel);
 		 graf.setLocation((int)this.posX, (int)this.posY);
 		 hitbox.setPos((int)this.posX, (int)this.posY);
 		 
