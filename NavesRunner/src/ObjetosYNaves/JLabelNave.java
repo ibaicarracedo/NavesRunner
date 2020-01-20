@@ -7,8 +7,13 @@ import javax.swing.JLabel;
 
 import PanelesYVentanas.Constantes;
 
+/**
+ * @author iCarr
+ * @version 1.0: Just scale an image to a JLabel size
+ */
 public class JLabelNave extends JLabel{
 
+	
 		public JLabelNave() {
 			try {
 				ImageIcon img = new ImageIcon(System.getProperty("user.dir") +"\\img\\nave.png");

@@ -1,6 +1,11 @@
 package PanelesYVentanas;
 import java.awt.Toolkit;
 
+/**
+ * Todas las Constantes usadas en el programa
+ * @author iCarr
+ *
+ */
 public final class Constantes {
 	
 	// Constantes ventana
@@ -20,7 +25,7 @@ public final class Constantes {
 	public static final int TIEMPO_PARPADEO = 2; //Cuando choca impl mas adelante con vidas (Si da tiempo)
 	
 	//Asteroides
-	public static int PROB_AST = 4; // Podemos ponerla en tanto por 1 o tanto por 100. No final porque mas dificil con tiempo (reduce)
+	public static int PROB_AST = 5; // Podemos ponerla en tanto por 1 o tanto por 100. No final porque mas dificil con tiempo (reduce)
 	
 	//Hitbox
 	public static final double RAD_HIT = 27.0d; // Pitagoras A^2 = 2*(38^2)
@@ -31,5 +36,8 @@ public final class Constantes {
 	
 	//Puntuacion
 	public static final double INC_PUNT = 2.5d;
+	
+	//NOmbres de BD
+	public static final String nomBD= "usuariosypuntuaciones";
 	
 }

@@ -6,15 +6,29 @@ public class CircleHitbox extends GenHitbox{
 	
 	double radio;
 	
+	/**
+	 * Constructor con centro y radio 
+	 * @param posX posicion X
+	 * @param posY posicion Y
+	 * @param rad radio
+	 */
 	public CircleHitbox(int posX, int posY, double rad) {
 		super(posX, posY);
 		this.radio = rad;
 	}
 
+	/**
+	 * Funcion que se usa para conocer el radio
+	 * @return el radio
+	 */
 	public double getRadio() {
 		return radio;
 	}
 
+	/**
+	 * Ponemos radio de una hitbox de tipo circulo
+	 * @param radio
+	 */
 	public void setRadio(double radio) {
 		this.radio = radio;
 	}

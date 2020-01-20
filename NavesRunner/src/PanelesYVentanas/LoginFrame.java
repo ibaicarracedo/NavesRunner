@@ -1,4 +1,5 @@
 package PanelesYVentanas;
+import GmailYBd.BaseDeDatos;
 import GmailYBd.MailYConfirmaciones;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,18 +16,26 @@ import org.omg.CORBA.Environment;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Clase que controla todo lo relacionado con la ventana de login
+ * @author iCarr
+ *
+ */
 public class LoginFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtUser;
-	private JTextField txtPassword;
+	private JPasswordField txtPassword;
 	private static LoginFrame frame;
+	private static String nick = "";
 	/**
-	 * Launch the application.
+	 * Constructor de la ventana Login(Window builder)
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -45,10 +54,10 @@ public class LoginFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginFrame() {
-		setTitle("Space Runner Login");
 		setResizable(false);
+		setTitle("Space Runner Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 300);
+		setBounds(100, 100, 276, 288);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -56,31 +65,36 @@ public class LoginFrame extends JFrame {
 		
 		txtUser = new JTextField();
 		txtUser.setText("User");
-		txtUser.setBounds(460, 80, 156, 26);
+		txtUser.setBounds(15, 58, 224, 26);
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);
 		
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setText("Password");
-		txtPassword.setBounds(460, 122, 156, 26);
+		txtPassword.setBounds(15, 100, 224, 26);
 		contentPane.add(txtPassword);
 		txtPassword.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				(new Thread() {
-					@Override
-					public void run() {
-						dispose();
-						GameFrame.main();
-						super.run();
-					}
-				}).start();
+				if (BaseDeDatos.loginUsuario(txtUser.getText(), String.valueOf(txtPassword.getPassword())) == true) {
+					nick = txtUser.getText();
+					(new Thread() {
+						@Override
+						public void run() {
+							dispose();
+							GameFrame.main();
+							super.run();
+						}
+					}).start();
 
+				} else {
+					JOptionPane.showMessageDialog(frame, "Error en user/password.");
+				}
 			}
 		});
-		btnLogin.setBounds(480, 164, 115, 29);
+		btnLogin.setBounds(73, 142, 115, 29);
 		contentPane.add(btnLogin);
 		
 		JButton btnRegister = new JButton("Register");
@@ -136,17 +150,16 @@ public class LoginFrame extends JFrame {
 				
 				register.addActionListener(new ActionListener() {
 					@Override
+					
 					public void actionPerformed(ActionEvent e) {
 						
 						MailYConfirmaciones.enviarMail(email1.getText());
+						if (BaseDeDatos.anadirUsuario(name1.getText(), email1.getText(), String.valueOf(pass1.getPassword())) == false) {
+							JOptionPane.showMessageDialog(registerForm, "Error al reegistrarse. Usuario existente.");
+						} else {
+							JOptionPane.showMessageDialog(registerForm, "Registro realizado correctamente. Chequea el correo para la confirmacion.");
+						}
 						
-						/*
-						Bases de datos metodos de añadir etc implementando bases de datos de usuarios 
-						1. Comprobar si el usuario esta creado antes de registrar buscando por un email
-						2. Si esta showDialog() de email ya esta en uso
- 						3. Si no, crea un usuario (INSERT)
-						4. Vuelta a ventana principal tras checkear el correo electronico
-						*/
 						
 					}
 				});
@@ -166,24 +179,35 @@ public class LoginFrame extends JFrame {
 				botonera.add(exit);
 				
 				
-				registerForm.add(botonera, BorderLayout.SOUTH);
-				registerForm.add(registro, BorderLayout.CENTER);
+				registerForm.getContentPane().add(botonera, BorderLayout.SOUTH);
+				registerForm.getContentPane().add(registro, BorderLayout.CENTER);
 				
 				
 				registerForm.setSize(300, 225);
 				registerForm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);;
 				registerForm.setLocationRelativeTo(null);
 				registerForm.setVisible(true);
-				frame.dispose();;
+				frame.dispose();
 			}
 		});
-		btnRegister.setBounds(480, 198, 115, 29);
+		btnRegister.setBounds(73, 177, 115, 29);
 		contentPane.add(btnRegister);
 		
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		lblLogin.setBounds(523, 38, 45, 26);
+		lblLogin.setBounds(108, 16, 45, 26);
 		contentPane.add(lblLogin);
+		
+		try {
+			BaseDeDatos.crearBD(Constantes.nomBD);
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	public static String getNick() {
+		return nick;
 	}
 }
 

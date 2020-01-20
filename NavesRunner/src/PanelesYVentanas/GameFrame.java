@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import GmailYBd.BaseDeDatos;
 import Hitbox.CircleHitbox;
 
 public class GameFrame extends JFrame {
@@ -30,6 +31,9 @@ public class GameFrame extends JFrame {
 	private boolean frena = false;
 	private JLabel score;
 	
+	/**
+	 *  Constructor de la ventana de juego con escuchadores
+	 */
 	public GameFrame() {
 		
 		
@@ -38,6 +42,7 @@ public class GameFrame extends JFrame {
 		score = new JLabel("Puntuacion: ");
 		pJuego.add(score);
 		score.setBounds(5, 5,100, 25);
+		Constantes.OB_VEL = -20;
 		
 		this.setSize(Constantes.FRAME_ANCHO, Constantes.FRAME_ALTO);
 		this.getContentPane().add(pJuego, BorderLayout.CENTER);
@@ -80,18 +85,28 @@ public class GameFrame extends JFrame {
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Main principal de la ventana de juego
+	 */
 	public static void main () { 
 		GameFrame g = new GameFrame();
 		g.crearNaveyAst();
 		g.jugar();
 	}
 	
+	
+	/**
+	 * Funcion que inicia los arrays de naves y asteroides
+	 */
 	public void crearNaveyAst() {
 		nave = new Nave(0, Constantes.POS_INICIAL_ALTO, Constantes.OB_VEL);
 		pJuego.add(nave.getJLabel()); 
 		ast = new ArrayList<Asteroide>();
 	}
 	
+	/**
+	 * Funcion que inicia el bucle principal de juego
+	 */
 	public void jugar() { // bucle principal
 	
 		int i;
@@ -150,23 +165,53 @@ public class GameFrame extends JFrame {
 				a.mueve(Constantes.TASA_REFRESCO/85.0);
 				if (a.getHitbox().hayChoqueHitbox(nave.getHitbox()) == true) {
 					acabado = true;
-					String opciones[] = { "Guardar y jugar", "Jugar de nuevo", "Salir"};
+					String opciones[] = { "Guardar(solo si es mas alta) y jugar", "Jugar de nuevo", "Salir", "Tabla de puntuaciones"};
 					int x = JOptionPane.showOptionDialog(pJuego, "Tu puntuacion ha sido de " + puntuacion + "\n. Deseas guardar los resultados ? ",
 							"Game Over", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 							null, opciones, opciones[0]);
 					
 					if (x == 0) {
-						// Guardamos y llamamos a gameframe otra vez
+						
+						if (BaseDeDatos.actualizarPuntuacion(LoginFrame.getNick(), puntuacion) == false) {
+							JOptionPane.showMessageDialog(this, "Error al actualizar la puntuación. Se cerrara el programa");
+						} else {
+							(new Thread() {
+								@Override
+								public void run() {
+									dispose();
+									GameFrame.main();
+									super.run();
+								}
+							}).start();
+						}
+						
+						// Guardamos en BD y llamamos a gameframe otra vez
+						
+						
+						
+						
 					} else if (x == 1) {
 						// llamamos a gameframe
+						(new Thread() {
+							@Override
+							public void run() {
+								dispose();
+								GameFrame.main();
+								super.run();
+							}
+						}).start();
+						
+					} else if (x == 3) {
+						FramePuntuaciones f = new FramePuntuaciones();
+						dispose();
 					} else {
-						// Salimos del juego
+						dispose();
 					}
 				}
 			}
 			
 			
-			for (Asteroide a: ast) {
+			for (Asteroide a: ast) { // Los que se salen de la pantalla se borran
 				for (i = 0; i< ast.size(); i++) {
 					if (a.equals(ast.get(i)) == true) {
 						if (a.getPosY() <= - Constantes.RAD_HIT_AST)

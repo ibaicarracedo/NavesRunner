@@ -8,6 +8,11 @@ import javax.swing.JLabel;
 
 import PanelesYVentanas.Constantes;
 
+
+/**
+ * @author iCarr
+ * @version 1.0: Scale an image of an asteroid to a JLabel size.
+ */
 public class JLabelAsteroide extends JLabel {
 	
 	public JLabelAsteroide() {
